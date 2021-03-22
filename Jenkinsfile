@@ -30,10 +30,10 @@ pipeline {
         stage('Build Application') {
             steps {
                 sh 'mvn -f java-tomcat-sample/pom.xml clean package'
+                build job: 'Deploy_Application_Staging_Env'
             }
-         stage('Deploy in Staging Environment') {
+         stage('Deploy in Staging Environment'){
             steps { 
-               build job: 'Deploy_Application_Staging_Env' 
             }
             post {
                 success {
@@ -44,5 +44,4 @@ pipeline {
 
         }
     }
-}
 }
