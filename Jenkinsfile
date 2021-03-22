@@ -36,7 +36,7 @@ pipeline {
                     echo "Now Archiving the Artifacts...."
                     archiveArtifacts artifacts: '**/*.war'
          stage('Deploy in Staging Environment'){
-              build job: Deploy_Application_Staging_Env }
+              build job: Deploy_Application_Staging_Env 
            }
         }
     }
