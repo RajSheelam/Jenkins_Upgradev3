@@ -31,15 +31,15 @@ pipeline {
             steps {
                 sh 'mvn -f java-tomcat-sample/pom.xml clean package'
             }
+                 stage('Deploy in Staging Environment'){
+              build job: 'Deploy_Application_Staging_Env' 
+            }
             post {
                 success {
                     echo "Now Archiving the Artifacts...."
                     archiveArtifacts artifacts: '**/*.war'
                  }
             }
-         stage('Deploy in Staging Environment'){
-              build job: 'Deploy_Application_Staging_Env' 
-           }
+
         }
     }
-}
